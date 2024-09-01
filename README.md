@@ -43,6 +43,12 @@ Componentes Clave de Grafana:
 
 Para ejecutar el proyecto, necesitas antes tener Docker y Docker Compose instalado.
 
+Luego, cambiar usuario y contraseña de base de datos mysql: 
+
+* [docker-compose.yml](docker-compose.yml)
+* fraud-detection-service: [application.properties](fraud-detection-service/src/main/resources/application.properties)
+* loan-service: [application.properties](loan-service/src/main/resources/application.properties) 
+
 Ejecutar Docker Compose:
 ``` bash
 docker compose up -d
@@ -82,6 +88,15 @@ Desde http://localhost:8080 (loan-service)
     - Estado 201 Created si el préstamo se crea exitosamente.
     - Estado 400 Bad Request si hay un error en la solicitud.
     - Cuerpo de la respuesta: `{ "customerName": "Nombre del cliente", "customerId": "ID del cliente", "amount": "monto del préstamo solicitado", "loanStatus": "APPROVED o REJECTED" }`
+
+Desde http://localhost:8081 (loan-service)
+
+- **GET /fraud/check?customerId=**
+  - **Descripción:** Verifica si existe un registro de fraude para un cliente específico.
+  - **Respuesta:**
+    - Estado 200 OK.
+    - Estado 400 Bad Request si hay un error en la solicitud.
+    - Cuerpo de la respuesta: `"REJECTED" o "APPROVED"`
 
 ## Authors
 

@@ -4,7 +4,7 @@ services:
     image: mysql:8
     container_name: mysqldb
     environment:
-      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_ROOT_PASSWORD: chanochoca # Modifica con tu contraseña de MySQL
     ports:
       - "3316:3306"
     volumes:
